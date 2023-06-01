@@ -1,0 +1,59 @@
+package level2_no4;
+
+/*4)  Use DoubleSummaryStatistics to output to the console 
+ * the top test score, lowest test score, and average among all test scores in a given list.  
+ */
+
+import java.util.ArrayList;
+import java.util.DoubleSummaryStatistics;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class ExamData {
+	private String studentName;
+	private double testScore;
+	
+	public ExamData(String studentName, double testScore) {
+		super();
+		this.studentName = studentName;
+		this.testScore = testScore;
+	}
+	
+	public double getTestScore() {
+		return testScore;
+	}
+	
+	public static void main(String[] args) {
+		List<ExamData> data = new ArrayList<ExamData>() {
+			{
+				add(new ExamData("Georage", 91.3));
+				add(new ExamData("Tom", 88.9));
+				add(new ExamData("Rick", 80));
+				add(new ExamData("Harold", 90.8));
+				add(new ExamData("Ignatius", 60.9));
+				add(new ExamData("Anna", 77));
+				add(new ExamData("Susan", 87.3));
+				add(new ExamData("Phil", 99.1));
+				add(new ExamData("Alex", 84));
+			}
+		};	
+		
+		//--------------
+		//4. the top test score, lowest test score, and average among all test scores in a given list 
+		//--------------
+		
+		DoubleSummaryStatistics summary 
+			= data.stream().collect(Collectors.summarizingDouble(ExamData::getTestScore));
+		
+		double topScore = summary.getMax();
+		double minScore = summary.getMin();
+		double avgScore = summary.getAverage();
+		
+		System.out.println("4)  Use DoubleSummaryStatistics to output :");
+		System.out.printf("Top Test Score : %.2f%n", topScore);
+		System.out.printf("Lowest Score : %.2f%n", minScore);
+		System.out.printf("Average Score : %.2f%n", avgScore);
+		
+	}
+
+}

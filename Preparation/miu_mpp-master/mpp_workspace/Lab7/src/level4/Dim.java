@@ -1,0 +1,14 @@
+package level4;
+
+public enum Dim {
+	LENGTH(1.0),WIDTH(2.0);
+	double val;
+	
+	Dim(double x){
+		val = x;
+	}
+	public double val() {
+		return val;
+	}
+	//Dim.LENGTH calls constructor. Then comes the call to val( ) 
+}
