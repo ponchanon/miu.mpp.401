@@ -1,0 +1,21 @@
+package prog1;
+
+public class CorporateCust extends ACustomer {
+	private String creditRating;
+	private double creditLimit;
+	
+	public CorporateCust(double creditLimit) {
+		super();
+		this.creditRating = "good";
+		this.creditLimit = creditLimit;
+	}
+	public void generateMonthlyBill() {
+		//
+	}
+	@Override
+	public String getCreditRating() {
+		return creditRating;
+		
+	}
+
+}

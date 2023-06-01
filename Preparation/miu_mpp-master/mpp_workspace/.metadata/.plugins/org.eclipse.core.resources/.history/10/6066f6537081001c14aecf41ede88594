@@ -1,0 +1,54 @@
+package level1;
+	
+import java.awt.Dimension;
+import java.awt.Label;
+
+import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.layout.FlowPane;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
+
+
+public class Main extends Application {
+	
+	@Override
+	public void start(Stage primaryStage) {
+		int lblWidthMin = 130;
+		int lblHeight = 25;
+		try {
+			FlowPane flowpane = new FlowPane(); //(FlowPane)FXMLLoader.load(getClass().getResource("Sample.fxml"));
+			flowpane.setAlignment(Pos.CENTER);
+			
+			
+			
+			Label lblName = new Label("Name");
+			lblName.setPreferredSize(new Dimension(lblWidthMin, lblHeight));
+			Label lblStreet = new Label("Street");
+			lblStreet.setPreferredSize(new Dimension(lblWidthMin, lblHeight));
+			Label lblCity = new Label("City");
+			lblCity.setPreferredSize(new Dimension(lblWidthMin, lblHeight));
+			Label lblState = new Label("State");
+			lblState.setPreferredSize(new Dimension(lblWidthMin, lblHeight));
+			Label lblZip = new Label("Zip");
+			lblZip.setPreferredSize(new Dimension(lblWidthMin, lblHeight));
+			
+			Scene scene = new Scene(flowpane,620,500);
+			
+			
+			flowpane.getChildren().add(lblName, flowpane)	
+			
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setTitle("Address Form");
+			primaryStage.setScene(scene);
+			primaryStage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+}

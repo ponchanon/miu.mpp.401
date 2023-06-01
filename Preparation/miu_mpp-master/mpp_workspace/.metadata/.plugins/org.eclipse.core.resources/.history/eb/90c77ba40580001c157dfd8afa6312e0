@@ -1,0 +1,12 @@
+package prog1;
+
+import java.time.LocalDate;
+
+public class Order {
+	private String ordernumber;
+	private boolean prepaid;
+	private double orderprice;
+	private LocalDate orderdate;
+	private String status;
+	
+}

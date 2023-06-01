@@ -1,0 +1,72 @@
+package level2_no5_redo_school_lab2_level2;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Department {
+
+	private String name;
+	private List<Person> persons;//unidirectional, 0 to many 	
+	
+	Department(String name){
+		this.name = name;
+		persons= new ArrayList<Person>();
+	}
+	public double getTotalSalary() {		
+		//----------------
+		// lambda & stream
+		//----------------
+		return persons.stream().mapToDouble(Person::getSalary).sum();
+		
+//		double sumSalary = 0.0;
+//		for(Person p : persons) {
+//			if(p instanceof Staff || p instanceof StaffStudent || p instanceof Faculty) {//note* cannot do !(p instanceof Student) //as staffstudent is the child of student
+//				sumSalary += p.getSalary();
+//			}
+//		}
+//		return sumSalary;
+	}
+	public void showAllMembers() {
+		//----------------
+		// lambda & stream
+		//----------------
+		persons.stream().forEach(p -> System.out.printf("%s%n", p.name + "," + p.phone + "," + p.age + "," + p.getClass().getSimpleName()));
+		
+	}
+	public void unitsPerFaculty() {
+		//----------------
+		// lambda & stream
+		//----------------
+		persons.stream().filter(p -> p instanceof Faculty)
+			.forEach( p -> System.out.println(p.name + " : " + ((Faculty)p).getTotalUnits()));
+		
+//		persons.forEach(person -> {
+//			if(person.getClass().getSimpleName().equals("Faculty")) {
+//				System.out.println(person.name + " : " + ((Faculty)person).getTotalUnits());
+//			}
+//		});	
+		
+		
+	}	
+	public void addPerson(Person p) {
+		persons.add(p);
+	}
+	public void showAllStudentsNCourses(){
+		//----------------
+		// lambda & stream
+		//----------------
+//		persons.stream().filter(p -> p instanceof Student && p instanceof StaffStudent)
+//			.forEach(p -> {
+//				Student s1 = (Student) p;
+//				s1.showCourses();
+//			});
+			
+		//for each
+		for(Person person: persons) {
+			if(person instanceof Student  || person instanceof StaffStudent) {
+				Student s1 = (Student) person;
+				s1.showCourses();
+			}
+		}
+	}
+}

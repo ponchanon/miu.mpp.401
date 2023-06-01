@@ -1,0 +1,83 @@
+package level2_3b;
+
+import java.io.*;                 // for I/O
+import java.lang.Integer;  
+import java.util.ArrayList;
+
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+
+/**
+ * This is a skeleton class that you can use for guidance in starting the lab.
+ *
+ * You should update any comments,
+ * variable names, etc to follow the class coding conventions.
+ */
+
+public class DepartmentApplication extends Application
+   {
+	@Override
+	public void start(Stage primaryStage) {
+		int lblWidthMin = 170;
+		int txtWidth = 200;
+		int lblHeight = 25;
+		FlowPane flowpane = new FlowPane(); 
+		flowpane.setAlignment(Pos.TOP_CENTER);
+		flowpane.getStyleClass().add("pane");
+		flowpane.setPadding(new Insets(10,15,0,15));//top,
+		
+		Text txtWelcome = new Text("Welcome to Department Application");
+		
+		Button btnTtSalary = new Button("Show Total Salary");
+		btnTtSalary.setPrefWidth(130);
+		Button btnAllMembers = new Button("Show All Members");
+		btnAllMembers.setPrefWidth(130);
+		Button btnUnitsPF = new Button("Show Units Per Faculty");
+		btnUnitsPF.setPrefWidth(130);
+		
+		HBox hbox1 = new HBox();
+		hbox1.setPrefWidth(500);
+		hbox1.getChildren().addAll(btnTtSalary, btnAllMembers, btnUnitsPF);
+		
+		Text txtShowAllStuFac = new Text("All Students Of A Faculty Member ");
+		Label lblInput = new Label();
+		lblInput.setText("Enter a name of Faculty member:");
+		lblInput.setPrefWidth(300);
+		TextField txtInput = new TextField();
+		txtInput.setPrefSize(300, lblHeight);
+		Button btnStusOfFac = new Button("Show");
+		btnStusOfFac.setPrefWidth(130);
+		
+		HBox hbox2 = new HBox();
+		hbox2.setPrefWidth(500);
+		hbox2.getChildren().addAll(txtShowAllStuFac, lblInput, txtInput,btnStusOfFac );
+		
+		flowpane.getChildren().add(txtWelcome);
+		flowpane.getChildren().addAll(hbox1,hbox2);
+		
+		Scene scene = new Scene(flowpane,550,500);
+		scene.getStylesheets().add(getClass().getResource("department.css").toExternalForm());
+		primaryStage.setTitle("Department Application");
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+	
+   public static void main(String[] args) throws IOException
+      {   
+    
+      
+		launch(args);
+      }
+
+   }  // end class 
+

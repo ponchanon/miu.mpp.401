@@ -1,0 +1,34 @@
+package level1_3a;
+
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+
+public class Menu extends Application{
+
+	@Override
+	public void start(Stage primaryStage) {		
+		 //Creating a menu
+			Menu myMenu = new Menu("File");
+	      //Creating menu Items
+	      MenuItem item1 = new MenuItem("Add Files");
+	      MenuItem item2 = new MenuItem("Start Converting");
+	      MenuItem item3 = new MenuItem("Stop Converting");
+	      MenuItem item4 = new MenuItem("Remove File");
+	      MenuItem item5 = new MenuItem("Exit");
+	      //Adding all the menu items to the menu
+	      //myMenu.getItems().addAll(item1, item2, item3, item4, item5);
+	      //Creating a menu bar and adding menu to it.
+	      //MenuBar menuBar = new MenuBar(myMenu);
+	      //menuBar.setTranslateX(200);
+	      //menuBar.setTranslateY(20);
+	}
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+}

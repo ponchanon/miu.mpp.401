@@ -1,0 +1,51 @@
+package level1;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class Main_3a_b_c {
+	
+	public static void main(String[] args) {
+		System.out.println("Answers for Lab - Lambdas and Streams : No. 3(a) (b) (c)\n");
+		//--------------
+		//testing 3(a) method countWords
+		//--------------
+		MainLab m = new MainLab();
+		int r = m.countWords(new ArrayList<String>(Arrays.asList("coat", "count", "catch", "caught", "court", "lamb", "sheep", "easier")), 
+				'a','g',4);
+		System.out.println("return from 3(a) method calling is " + r);
+		//--------------
+		//3(b) Use reduce to concatenate the Strings 
+		//--------------
+		Stream strings = Stream.of("A", "good", "day", "to", "write", "some", "Java");
+		System.out.printf("%n3(b) Use reduce to concatenate the Strings %n%s%n",
+		strings.reduce("",(v1, v2) -> v1 + " " + v2));
+		
+	}
+	
+	//*******************************************
+	//3 (a) Implement  a method
+	//*******************************************
+		public int countWords(List<String> words, char c, char d, int len)
+		{	
+			//for tracing
+			System.out.printf("%n3(a)Counts the number of words in the input list words %n%s%n",
+				words.stream()			
+					.filter(ch -> ch.toString().indexOf(c) != -1)
+					.filter(ch -> ch.toString().indexOf(d) == -1)
+					.filter(v -> v.length() == len)
+					//.count());
+					.collect(Collectors.toList()));
+			//
+			return (int) words.stream()			
+				.filter(ch -> ch.toString().indexOf(c) != -1)
+				.filter(ch -> ch.toString().indexOf(d) == -1)
+				.filter(v -> v.length() == len)
+				.count();
+		}
+			
+		
+}

@@ -1,0 +1,26 @@
+package final_test;
+
+import java.util.Calendar;
+import java.util.Date;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Date myDate;
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.MONTH, 8);
+        cal.set(Calendar.DATE, 24);
+        cal.set(Calendar.YEAR, 2013);
+        cal.set(Calendar.HOUR,13);
+        cal.set(Calendar.MINUTE,45);
+        cal.set(Calendar.SECOND,52);
+        myDate = cal.getTime();
+        
+		Employee john = new Employee(0001, "John", "", "Smith", 1980, 06, 01,"123-45-6789",4500.00,myDate );
+		Employee john2 = new Employee(0001, "John", "", "Smith", 1980, 06, 01,"123-45-6789",4500.00, myDate);
+		Employee mary = new Employee(0002, "Mary", "Roslyn", "Jane", 1988, 10, 20,"123-45-6789",3500.00, myDate);
+
+	}
+
+}

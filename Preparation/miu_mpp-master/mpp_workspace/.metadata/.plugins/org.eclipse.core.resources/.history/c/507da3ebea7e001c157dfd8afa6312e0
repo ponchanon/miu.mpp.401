@@ -1,0 +1,41 @@
+package level2_4;
+
+/*4)  Use DoubleSummaryStatistics to output to the console 
+ * the top test score, lowest test score, and average among all test scores in a given list.  
+ */
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ExamData {
+	private String studentName;
+	private double testScroe;
+	
+	public ExamData(String studentName, double testScroe) {
+		super();
+		this.studentName = studentName;
+		this.testScroe = testScroe;
+	}
+
+	public static void main(String[] args) {
+		List<ExamData> data = new ArrayList<ExamData>() {
+			{
+				add(new ExamData("Georage", 91.3));
+				add(new ExamData("Tom", 88.9));
+				add(new ExamData("Rick", 80));
+				add(new ExamData("Harold", 90.8));
+				add(new ExamData("Ignatius", 60.9));
+				add(new ExamData("Anna", 77));
+				add(new ExamData("Susan", 87.3));
+				add(new ExamData("Phil", 99.1));
+				add(new ExamData("Alex", 84));
+			}
+		};	
+		
+		//--------------
+		//4. the top test score, lowest test score, and average among all test scores in a given list 
+		//--------------
+
+	}
+
+}

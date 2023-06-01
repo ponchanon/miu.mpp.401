@@ -1,0 +1,47 @@
+package prog1;
+
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		ACustomer john = new CorporateCust("John", "1000 N 4th St, Fairfield IA 52557", "641-819-2000", 25,50.00);
+		ACustomer mary = new PersonalCust("Mary", "5 St.Micheal Ave, Brooklyn NY 72597", "641-819-2002", 25,"1234567890123456");
+
+		
+		Product shirt = new Product("T Shirt", "00001", 45.00, new OtherPoints());
+		Product laptop = new Product("Dell Laptop", "00002", 2180.00, new ComputerPoints());
+		Product hdd = new Product("External HDD", "00003", 89.90, new ComputerPoints());
+		Product vitD = new Product("Vitamin D", "00004", 65.00, new HealthPoints());
+		Product tvSamsung = new Product("Samsung TV", "00005", 899.00, new AudioVideoPoints());
+		Product wheelchair = new Product("Wheel Chair", "00006", 569.90, new HealthPoints());
+		Product speaker = new Product("Speaker", "00007", 150.00, new AudioVideoPoints());
+		Product boots = new Product("Rain Boots", "00008", 99.00, new OtherPoints());
+		
+		List<Product> jProdList1 = Arrays.asList(vitD, shirt);
+		List<Product> jProdList2 = Arrays.asList(laptop);
+		
+		List<Product> mProdList = Arrays.asList(wheelchair, tvSamsung, boots, speaker);
+		
+		Order jOrder1 = new Order("000-000-123", LocalDate.of(2021, 10, 10), "Processing", john);
+		Orderline jOrder1line1 = new Orderline("shipped", LocalDate.of(2021, 10, 20), jOrder1, jProdList1);
+		Orderline jOrder1line2 = new Orderline("shipped", LocalDate.of(2021, 10, 25), jOrder1, jProdList2);
+		
+		jOrder1.addOrderLine(jOrder1line1);
+		jOrder1.addOrderLine(jOrder1line2);
+		
+		System.out.println(jOrder1.toString());
+		for( Orderline l : jOrder1.getOrderLineList()) {
+			System.out.print(l.toString());
+			int count = 1;
+			for(Product p : l.getProductList()) {
+				System.out.print(count + ". " + p.toString());
+				count++;
+			}
+		}
+	}
+
+}

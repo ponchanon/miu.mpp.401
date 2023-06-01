@@ -1,0 +1,7 @@
+package level4;
+
+public interface IPerson {
+	default myDefault() {
+		System.out.println("From default method");
+	}
+}

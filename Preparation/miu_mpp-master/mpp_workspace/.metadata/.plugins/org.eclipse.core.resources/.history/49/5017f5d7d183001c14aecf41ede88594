@@ -1,0 +1,83 @@
+package final_cloOldQuestion;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.Function;
+
+public class Main {
+	public static void main(String[] args) {
+		List<Company> arr1 = new ArrayList<Company>();
+		arr1 = Arrays.asList(
+				new Company("IBM","Moisey", "Dovan",1000.00),
+				new Company("Microsoft","Tahoma", "New York",1000.00),
+				new Company("Dell","Huston", "Texas",1000.00),
+				new Company("Google","Dallas", "Nebraska",40000000.00),
+				new Company("Daewoo","Calton", "Califonia",1000.00),
+				new Company("IBM","Mohamad", "Nebraska",1000.00),
+				new Company("IBM","Couse", "Dilly",1000.00),
+				new Company("IBM","Truise", "Iowa",1000.00)
+				);
+		
+		//a
+		System.out.println("a) ----------------------"); 
+		arr1.stream().filter(c -> c.getCompanyCity().charAt(0) == 'M')
+			.map(Company::getCompanyCity)
+			.distinct()
+			.sorted()
+			.forEach(System.out::println);
+		
+		//a
+		System.out.println("a) ----------------------"); 
+		arr1.stream().filter(c -> c.getCompanyCity().charAt(0) == 'M')
+		//.map(Company::getCompanyCity)
+		.distinct()
+		.sorted(Comparator.comparing(Company::getCompanyCity))
+		.forEach(c -> System.out.println(c.getCompanyCity()));
+		
+		//b - average
+		System.out.println("b) ----------------------"); 
+		System.out.printf("%nAverage: %s",
+				arr1.stream().mapToDouble(Company::getTotalProfitForThisYear)
+					.average()
+					.getAsDouble()
+				);
+		//c - sum , use reduce
+		System.out.println("c) ----------------------"); 
+		System.out.printf("%nTotal Sum: %s%n",
+				arr1.stream().mapToDouble(Company::getTotalProfitForThisYear)
+					.reduce(0,(x,y) -> x + y)
+				);
+		
+		//d 
+		System.out.println("d) ----------------------"); 
+		arr1.stream().forEach(c -> {
+			if(c.getCompanyCity().charAt(0)=='T')
+			{
+				c.setCompanyCity(c.getCompanyCity().toUpperCase());
+			}
+			System.out.println(c);
+		});
+		
+		System.out.println("e) ----------------------"); 		
+		//e
+		arr1.stream().filter(c -> c.getCompanyState().equals("Nebraska"))
+			.filter(c-> c.getTotalProfitForThisYear() > 4000000)
+			.forEach(System.out::println);
+		
+		//f
+		System.out.println("f) ----------------------"); 
+		Function<Company, String> byState = s -> {
+			if(s.getCompanyState().charAt(0) == 'D') {
+				return s.getCompanyState();
+			}
+		};
+		
+		Map<String, List<Company>> groupByState	
+		
+	}
+	
+	//f
+
+}

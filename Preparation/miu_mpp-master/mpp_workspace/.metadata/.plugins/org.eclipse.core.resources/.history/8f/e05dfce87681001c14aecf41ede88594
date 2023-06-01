@@ -1,0 +1,21 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.pane {
+	-fx-border-width: 0;
+	-fx-border-color: black;
+}
+
+Label{
+	-fx-border-width: 0;
+	-fx-border-color: blue;	
+	-fx-padding: 0px 10px 0px 0px;
+    -fx-border-insets:  0px 10px 0px 0px;
+    -fx-background-insets:  0px 10px 0px 0px;
+}
+
+TextField{
+	-fx-border-width: 1;
+	-fx-border-color: gray;
+	-fx-padding: 0px 10px 10px 0px;
+    -fx-border-insets:  0px 10px 10px 0px;
+    -fx-background-insets:  0px 10px 10px 0px;
+}

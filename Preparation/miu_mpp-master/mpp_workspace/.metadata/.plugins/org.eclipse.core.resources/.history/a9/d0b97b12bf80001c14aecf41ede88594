@@ -1,0 +1,6 @@
+module JavaFX_HW_Day-1_USE_L66_D {
+	requires javafx.controls;
+	requires javafx.fxml;
+	
+	opens level1 to javafx.graphics, javafx.fxml;
+}

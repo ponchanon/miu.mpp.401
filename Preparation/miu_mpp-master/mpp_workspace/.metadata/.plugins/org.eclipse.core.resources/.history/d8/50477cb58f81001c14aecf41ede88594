@@ -1,0 +1,79 @@
+package level3;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Department {
+
+	private String name;
+	private List<Person> persons;//unidirectional, 0 to many 
+		
+	Department(String name){
+		this.name = name;
+		persons= new ArrayList<Person>();
+	}
+	public double getTotalSalary() {
+		double sumSalary = 0.0;
+		//polymorphism
+		//computes the sum of all the salaries (per month) paid to faculty and staff.		
+		//lambda
+//		persons.forEach(person -> {
+//				if(!(person.getClass().getSimpleName().equals("Student"))) 	sumSalary += person.getSalary();
+//					
+//		});	
+		//for each
+		for(Person p : persons) {
+			if(!(p instanceof Student)) {
+				sumSalary += p.getSalary();
+			}
+		}
+		return sumSalary;
+	}
+	public void showAllMembers() {
+		// shows the name, phone number, age and type (student, faculty or staff) of all members in the department.
+		persons.forEach(person -> System.out.println(person.name + "," + person.phone + "," + person.age + "," + person.getClass().getSimpleName()));
+	}
+	public void unitsPerFaculty() {
+		//shows a list of all faculty names and the total number of units they teach.  
+		//For unitsPerFaculty()  do it two different ways.  One is use  instanceOf, and the other is use   getClass().getSimpleName()
+		persons.forEach(person -> {
+			if(person.getClass().getSimpleName().equals("Faculty")) {
+				System.out.println(person.name + " : " + ((Faculty)person).getTotalUnits());
+			}
+		});		
+	}	
+	public void addPerson(Person p) {
+		persons.add(p);
+	}
+	
+	public void showAllStudentsOfAFacultyMember(String facName) {
+		//get facName's courses
+		List<Course> facCourses = new ArrayList<Course>();
+		for(Person p : persons) {
+			if(p instanceof Faculty) {
+				if(p.name.equals(facName)) {
+					facCourses = ((Faculty)p).getCourses();
+				}
+			}
+		}		
+		//find students who take fac member courses
+		System.out.println("List of students who take " + facName + " classes : ");
+		
+		for(Person per : persons) {
+			if(per instanceof Student) {
+				//check this student is taken any of the facCourses
+				if (((Student)per).isTakenFacultyCourses(facCourses)) {
+					System.out.println(per.name);
+				}
+			}
+		}		
+	}
+	
+	public void showAllStudentsNCourses(){
+		persons.forEach(person ->{			
+			if(person.getClass().getSimpleName().equals("Student") || person.getClass().getSimpleName().equals("StaffStudent")) {
+				((Student)person).showCourses();
+			}
+		});
+	}
+}

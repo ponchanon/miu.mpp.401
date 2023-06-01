@@ -1,0 +1,55 @@
+package Level1_2;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Department {
+	
+	private String name;
+	private String location;
+	public List<Position> posList = new ArrayList<Position>();
+	
+	public Department() {
+		
+	}
+	public Department(String name, String location){
+		this.name = name;
+		this.location = location;
+	}
+	public String getName() {
+		return name;
+	}
+	
+	public String getLocation() {
+		return location;
+	}
+	
+	public List<Position> getPosList() {
+		return posList;
+	}
+	public void setPosList(List<Position> posList) {
+		this.posList = posList;
+	}
+	public void addPosition(Position p) {
+		posList.add(p);
+	}
+	public void print() {
+		System.out.printf("%s%n", "Department : " + name + " located at " + location);
+		for(int i = 0; i <posList.size(); i++) {
+			posList.get(i).print();
+		}
+	}
+	
+	public String toString() {
+		
+	}
+	
+	public boolean equals(Object d) {
+		if(d == null) return false;
+		if(! (d instanceof Department)) return false;
+		Department dept = (Department) d;
+		return dept.name.equals(this.name)
+				&& dept.location.equals(this.location)
+				&& dept.posList.equals(this.posList);
+	}
+}

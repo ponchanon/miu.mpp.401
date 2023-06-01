@@ -1,0 +1,15 @@
+package prog1;
+
+public class Product implements IProduct{
+	private String description;
+	private String productNumber;
+	private double price;
+	private ACompPoints compPoints;
+	
+	@Override
+	public double getPrice() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

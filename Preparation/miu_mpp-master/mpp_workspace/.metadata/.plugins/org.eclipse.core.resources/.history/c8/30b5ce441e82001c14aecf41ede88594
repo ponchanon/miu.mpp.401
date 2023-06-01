@@ -1,0 +1,16 @@
+package prog1;
+
+public class CorporateCust extends ACustomer {
+	private String creditRating;
+	private double creditLimit;
+	
+	public void generateMonthlyBill() {
+		//
+	}
+	@Override
+	public void getCreditRating() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

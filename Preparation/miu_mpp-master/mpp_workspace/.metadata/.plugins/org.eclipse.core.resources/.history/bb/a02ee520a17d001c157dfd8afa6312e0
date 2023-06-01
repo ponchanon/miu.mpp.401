@@ -1,0 +1,11 @@
+package level4;
+
+public class Person implements IPerson {
+
+	@Override
+	public void myAbstract() {
+		System.out.println("Overrided myAbstract method");
+		
+	}
+
+}

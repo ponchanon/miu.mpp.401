@@ -1,0 +1,22 @@
+package prog1;
+
+import java.time.LocalDate;
+import java.util.List;
+
+public class Orderline {
+	private int quantity;//this is orderline quantity e.g. 5 item in one shipped orderline
+	private double price;
+	private String status;
+	private LocalDate shipDate;
+	private double points;
+	private Order order;
+	private List<Product> productList;
+	//assumption: according to class diagram, orderline can have n products, but qty of product not included in consideration
+	//here we assume one product is 1 in product qty.
+	public double computePrice() {
+		return 0.0;
+	}
+	public double computePoints() {
+		return 0.0;
+	}
+}

@@ -1,0 +1,7 @@
+package jdbc_code;
+
+import java.awt.*;
+
+public class JFrame_UpdateGPA extends javax.swing.JFrame{
+
+}

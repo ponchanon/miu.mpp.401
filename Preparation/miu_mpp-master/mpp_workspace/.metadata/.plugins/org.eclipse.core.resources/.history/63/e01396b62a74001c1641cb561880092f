@@ -1,0 +1,77 @@
+package lab3_3;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Company ibm = new Company("IBM");
+		
+		Department all = new Department("All", "HH Tower Level 9", ibm);
+		Department sales = new Department("Sales", "HH Tower Level 9", ibm);
+		Department marketing = new Department("Marketing", "HH Tower Level 25", ibm);
+		
+		Position topExe = new Position("Top Executive","Top Executive", all);
+		Position deptHeadSales = new Position("Dept Head","Department Head - Sales", sales);
+		Position deptHeadMarkt = new Position("Dept Head","Department Head - Marketing", marketing);
+		
+		Position marktAssit = new Position("Marketing Assistant","Marketing Assistant", marketing);
+		
+		Position supervisor1 = new Position("Supervisor", "Sale Supervisor", sales);
+		Position supervisor2 = new Position("Supervisor", "Sale Supervisor", sales);
+		Position salesPerson1 = new Position("Sales Person", "Sales Person", sales);
+		Position salesPerson2 = new Position("Sales Person", "Sales Person", sales);
+		Position salesPerson3 = new Position("Sales Person", "Sales Person", sales);
+		Position salesPerson4 = new Position("Sales Person", "Sales Person", sales);
+		Position salesPerson5 = new Position("Sales Person", "Sales Person", sales);
+		
+		//int id, String fn, String mi, String ln, int yearOfBirth, int monthOfBirth, int dayOfBirth, long ssn, double sal, Position position)
+		Employee lyle  = new Employee(1, "Lyle", "", "Smith", 1980, 06, 01,"123-45-6789",14500.00, topExe);
+		Employee anne = new Employee(2, "Anne", "Roslyn", "Jane", 1988, 10, 20,"123-45-6789",6500.00, deptHeadMarkt);		
+		Employee gary = new Employee(3, "Gary", "Junior", "Moore", 1987, 10, 20,"123-45-6789",3500.00, marktAssit);
+		
+		Employee ron = new Employee(4, "Ron", "Bob", "Smith", 1997, 05, 11,"123-45-6789",6500.00, deptHeadSales);
+		Employee peter = new Employee(5, "Peter", "", "William", 1987, 10, 20,"123-45-6789",4500.00, supervisor1);
+		Employee dan = new Employee(6, "Dan", "Edison", "Brown", 1987, 10, 20,"123-45-6789",3500.00, salesPerson1);
+		Employee bill = new Employee(7, "Bill", "", "Gates", 1987, 10, 20,"123-45-6789",3500.00, salesPerson2);
+		
+		Employee stan = new Employee(8, "Stan", "", "O'reily", 1987, 10, 20,"123-45-6789",4500.00, supervisor2);
+		Employee mark = new Employee(9, "Mark", "", "Yang", 1987, 10, 20,"123-45-6789",3500.00, salesPerson3);
+		Employee sue = new Employee(10, "Sue", "", "Cherry", 1987, 10, 20,"123-45-6789",3500.00, salesPerson4);
+		Employee tom = new Employee(11, "Tom", "", "Hiddleton", 1987, 10, 20,"123-45-6789",3500.00, salesPerson5);
+		
+		
+		topExe.addEmployee(lyle);
+		deptHeadSales.addEmployee(ron);
+		deptHeadMarkt.addEmployee(anne);
+		marktAssit.addEmployee(gary);
+		supervisor1.addEmployee(peter);
+		salesPerson1.addEmployee(dan);
+		salesPerson2.addEmployee(bill);
+		supervisor2.addEmployee(stan);
+		salesPerson3.addEmployee(mark);
+		salesPerson4.addEmployee(sue);
+		salesPerson5.addEmployee(tom);
+		
+		
+		all.addPosition(topExe);
+		
+		sales.addPosition(deptHeadSales);
+		sales.addPosition(supervisor1);
+		sales.addPosition(supervisor2);
+		sales.addPosition(salesPerson1);
+		sales.addPosition(salesPerson2);
+		sales.addPosition(salesPerson3);
+		sales.addPosition(salesPerson4);
+		sales.addPosition(salesPerson5);
+		
+		marketing.addPosition(deptHeadMarkt);
+		marketing.addPosition(marktAssit);	
+		
+		ibm.addDepartment(all);
+		ibm.addDepartment(sales);
+		ibm.addDepartment(marketing);	
+				
+		//ibm.print();
+		double ttSal = ibm.getSalary();
+	}
+
+}

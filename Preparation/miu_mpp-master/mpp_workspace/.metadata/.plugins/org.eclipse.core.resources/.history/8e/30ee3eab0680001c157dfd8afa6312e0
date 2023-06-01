@@ -1,0 +1,10 @@
+package prog1;
+
+public abstract class ACustomer implements ICustomer {
+	private String name;
+	private String address;
+	private String phone;
+	private double points;
+	
+	public abstract void getCreditRating();
+}

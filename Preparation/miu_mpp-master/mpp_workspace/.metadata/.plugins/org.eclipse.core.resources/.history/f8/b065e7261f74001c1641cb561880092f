@@ -1,0 +1,48 @@
+package lab3_3;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Position {
+	private String title;
+	private String description;
+	private Employee employee = null;
+	private Department department;
+	
+	
+	public Position(String t, String des, Department d) {
+		this.title = t;
+		this.description = des;
+		this.department = d;
+	}
+	public Position(String t, String des, Department d, Employee e) {
+		this.title = t;
+		this.description = des;
+		this.department = d;
+		this.employee = e;
+	}
+
+	public void addEmployee(Employee e) {
+		this.employee = e;
+	}
+	
+	public void print() {
+		System.out.printf("%s", title + " - ");
+		if(employee != null) {
+			employee.print();
+		}else {
+			System.out.printf("%n","");
+		}
+		
+	}
+	//salary of position where employee filled, not vacant position
+	public double getSalary() {
+		return (employee != null ? employee.getSalary() : 0);	
+	}
+	public void printDownLine() {
+		
+	}
+	public boolean isManager() {
+		return false;
+	}
+}

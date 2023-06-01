@@ -1,0 +1,95 @@
+package level1;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class Main_3a_b_c {
+	
+	public static void main(String[] args) {
+		System.out.println("Answers for Lab - Lambdas and Streams : No. 3(a) (b) (c)\n");
+		//--------------
+		//testing 3(a) method countWords
+		//--------------
+		MainLab m = new MainLab();
+		int r = m.countWords(new ArrayList<String>(Arrays.asList("coat", "count", "catch", "caught", "court", "lamb", "sheep", "easier")), 
+				'a','g',4);
+		System.out.println("return from 3(a) method calling is " + r);
+		
+		//--------------
+		//3(b) Use reduce to concatenate the Strings 
+		//--------------
+		Stream strings = Stream.of("A", "good", "day", "to", "write", "some", "Java");
+		System.out.printf("%n3(b) Use reduce to concatenate the Strings %n%s%n",
+		strings.reduce("",(v1, v2) -> v1 + " " + v2));
+		
+		//--------------
+		//3(c) The many Java standard methods that are in the files I gave you; create programs to use  them and make sure the results are correct!  (For example, test findfirst, findany, the Optional object (use generics here), orElse inside an Optional, and others …
+		//--------------
+		
+		// initialize array of Employees
+		Employee[] employees = {
+		     new Employee("Jason", "Red", 5000, "IT"),
+		     new Employee("Ashley", "Green", 7600, "IT"),
+		     new Employee("Matthew", "Indigo", 3587.5, "Sales"),
+		     new Employee("James", "Indigo", 4700.77, "Marketing"),
+		     new Employee("Luke", "Indigo", 6200, "IT"),
+		     new Employee("Jason", "Blue", 3200, "Sales"),
+		     new Employee("Wendy", "Brown", 4236.4, "Marketing")};
+
+	      // get List view of the Employees
+	    List<Employee> list = Arrays.asList(employees);
+	    //--------------
+		//findFirst 
+	    //--------------
+		Predicate<Employee> fourToSixThousand = e-> (e.getSalary () >= 4000 && e.getSalary() <= 6000);
+		
+		//Display first Employee with salary in the range $4000-$6000
+		System.out.printf("%n3(c) FindFirst - First employee who earns $4000-$6000:%n%s%n",
+				list.stream()
+					.filter(fourToSixThousand)
+					.findFirst()
+					.get());
+		
+		//--------------
+		//findAny 
+	    //--------------
+		System.out.printf("%n3(c) FindAny - Any employee who earns $4000-$6000:%n%s%n",
+				list.stream()
+					.filter(fourToSixThousand)
+					.findAny()
+					.get());
+		
+		//--------------
+		//Optional Object 
+	    //--------------
+		
+		
+	}
+	
+	//*******************************************
+	//3 (a) Implement  a method
+	//*******************************************
+		public int countWords(List<String> words, char c, char d, int len)
+		{	
+			//for tracing
+			System.out.printf("%n3(a)Counts the number of words in the input list words %n%s%n",
+				words.stream()			
+					.filter(ch -> ch.toString().indexOf(c) != -1)
+					.filter(ch -> ch.toString().indexOf(d) == -1)
+					.filter(v -> v.length() == len)
+					//.count());
+					.collect(Collectors.toList()));
+			//
+			return (int) words.stream()			
+				.filter(ch -> ch.toString().indexOf(c) != -1)
+				.filter(ch -> ch.toString().indexOf(d) == -1)
+				.filter(v -> v.length() == len)
+				.count();
+		}
+			
+		
+}

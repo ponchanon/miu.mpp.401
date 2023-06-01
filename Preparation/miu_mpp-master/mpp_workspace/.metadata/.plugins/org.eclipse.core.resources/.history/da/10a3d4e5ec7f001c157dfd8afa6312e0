@@ -1,0 +1,22 @@
+package prob4;
+
+public class mainThreadClass {
+
+    public static void main( String[] args ) {
+
+        System.out.println("Inside main  ");   
+        PrimeThread p1 = new PrimeThread(1,200000);
+        p1.start();
+
+
+    }
+}
+
+
+
+
+
+
+
+
+

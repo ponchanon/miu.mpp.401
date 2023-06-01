@@ -1,0 +1,6 @@
+package level4;
+
+public class Test {
+	Person p1 = new Person("John", "641-819-2000", 50);
+	p1.myDefault();
+}

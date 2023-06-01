@@ -1,0 +1,45 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.pane {
+	-fx-border-width: 0;
+	-fx-border-color: black;
+}
+VBox{
+	-fx-border-width: 0;
+	-fx-border-color: blue;	
+	-fx-padding: 0px 15px 0px 0px;
+}
+
+Label{
+	-fx-border-width: 0;
+	-fx-border-color: blue;	
+	-fx-padding: 0px 10px 0px 0px;
+    -fx-border-insets:  0px 10px 0px 0px;
+    -fx-background-insets:  0px 10px 0px 0px;
+}
+
+TextField{
+	-fx-border-width: 1;
+	-fx-border-color: gray;
+	-fx-padding: 3px 0px 3px 0px;
+    -fx-border-insets:  0px 18px 5px 0px;
+    -fx-background-insets:  0px 18px 5px 0px;
+}
+
+HBox{
+	-fx-padding: 10px 0px 10px 0px;
+    -fx-border-insets:  0px 10px 0px 10px;
+    -fx-background-insets:  0px 10px 0px 10px;
+}
+
+.btn-head{
+	-fx-border-width: 1;
+	-fx-border-color: gray;
+	-fx-padding: 5px 0px 5px 0px;
+	-fx-border-insets:  8px 10px 8px 10px;
+    -fx-background-insets:  8px 10px 8px 10px;
+}
+.sub-head{
+	-fx-padding: 0px 300px 0px 0px;
+	 -fx-border-insets: 0px 300px 0px 0px;
+	 -fx-background-insets:0px 300px 0px 0px;
+}

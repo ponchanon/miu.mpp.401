@@ -1,0 +1,112 @@
+package prog1;
+
+import java.time.LocalDate;
+import java.util.List;
+
+public class Order {
+	private String ordernumber;
+	private boolean prepaid;
+	private double orderprice;
+	private LocalDate orderdate;
+	private String status;
+	private ACustomer customer;
+	private List<Orderline> orderLineList;
+	
+	
+	public Order(String ordernumber, boolean prepaid, double orderprice, LocalDate orderdate, String status,
+			ACustomer customer, List<Orderline> orderLineList) {
+		super();
+		this.ordernumber = ordernumber;
+		this.prepaid = prepaid;
+		this.orderprice = orderprice;
+		this.orderdate = orderdate;
+		this.status = status;
+		this.customer = customer;
+		this.orderLineList = orderLineList;
+	}	
+	
+	public String getOrdernumber() {
+		return ordernumber;
+	}
+
+
+	public void setOrdernumber(String ordernumber) {
+		this.ordernumber = ordernumber;
+	}
+
+
+	public double getOrderprice() {
+		return orderprice;
+	}
+
+
+	public void setOrderprice(double orderprice) {
+		this.orderprice = orderprice;
+	}
+
+
+	public LocalDate getOrderdate() {
+		return orderdate;
+	}
+
+
+	public void setOrderdate(LocalDate orderdate) {
+		this.orderdate = orderdate;
+	}
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+	public ACustomer getCustomer() {
+		return customer;
+	}
+
+
+	public void setCustomer(ACustomer customer) {
+		this.customer = customer;
+	}
+
+
+	public List<Orderline> getOrderLineList() {
+		return orderLineList;
+	}
+
+
+	public void setOrderLineList(List<Orderline> orderLineList) {
+		this.orderLineList = orderLineList;
+	}
+
+
+	public void setPrepaid(boolean prepaid) {
+		this.prepaid = prepaid;
+	}
+
+	//
+	public double getTotalPrice() {
+		return orderLineList.stream().mapToDouble(Orderline::computePrice).sum();//ignore the discount from points
+	}
+	
+	public boolean getPrepaid() {//if customer credit rating poor & credit-card info have -> prepaid works		
+		if(customer.getCreditRating().equals("poor")) {
+			if(((PersonalCust)customer).getCreditCard() != "") return true;
+		}
+		return false;
+	}
+	public double getCustomerPoints() {
+		return customer.getPoints();
+	}
+	public double getOrderPoints() {
+		return orderLineList.stream().mapToDouble(Orderline::computePoints).sum();
+	}
+	public void setCustomerPoints() {
+		customer.setPoints(customer.getPoints() + getOrderPoints());
+	}
+}

@@ -1,0 +1,14 @@
+package prog1;
+
+public class Audio_VideoPoints extends ACompPoints{
+	private double points;
+	public Audio_VideoPoints() {
+		super();
+		this.points  = 0.5;
+	}
+	@Override
+	public double getPoints() {
+		// TODO Auto-generated method stub
+		return points;
+	}
+}

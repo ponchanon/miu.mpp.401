@@ -1,0 +1,11 @@
+package level4;
+
+public class Enum_Test {
+
+	public static void main(String[] args) {
+		Person p = new Person("Micheal", 33 );
+		if(Size.LARGE)
+
+	}
+
+}

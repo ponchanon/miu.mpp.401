@@ -1,0 +1,83 @@
+package lab3_3;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+public class Department {
+	private String name;
+	private String location;
+	private List<Position> posList = new ArrayList<Position>();
+	//sw engineer
+	//tech lead
+	//web dev
+	//analyst
+	//head of dept
+	
+	public Department(String name, String location){
+		this.name = name;
+		this.location = location;
+	}	
+	public void addPosition(Position p) {
+		posList.add(p);
+	}
+	public void print() {
+		System.out.printf("%s%n", "Department : " + name );
+		for(int i = 0; i <posList.size(); i++) {
+			posList.get(i).print();
+		}
+	}
+	//total Department salary - summation of each filled position in department
+	public double getSalary() {
+		double sumSalary = 0.0;
+		for(int i = 0; i <posList.size(); i++) {
+			sumSalary += posList.get(i).getSalary();
+		}
+		return sumSalary;
+	}
+	public String getName() {
+		return name;
+	}
+	public String getLocation() {
+		return location;
+	}	
+	public List<Position> getPositionListInDepartment(){
+		return posList;
+	}
+	public void printReportingHierarchy() {
+		//print department head
+	}
+	public Position getDepartmentHead() {
+		Position rtnPos = null;
+		//1. get Dept head from posList
+		// - if position isManager - check his dept equal to current dept
+		// - not equals means he has to report to another dept - and he is the head
+		
+		for(Position p: posList) {
+			System.out.println("Checking Position is : " + p.getTitle());
+			System.out.println("isManager: " + p.isManager());
+			String superior = p.getManager().getDepartment().getName() != null ?  p.getManager().getDepartment().getName() : "";
+			System.out.println("Checking Position's Manager Dept is " + p.getManager().getDepartment().getName());
+			System.out.println("-----------------------");
+			if(p.isManager()) {				
+				if(!p.getManager().getDepartment().equals(this))					
+					rtnPos = p;
+			}
+		}	
+		return rtnPos;
+	}
+	public boolean equals(Object o){
+		if(o==null) return false;
+		if(o.getClass() != this.getClass()) {
+			return false;
+		}
+		Department d = (Department) o;
+		return (d.getName().equals(name)&& 
+				d.getLocation().equals(location) &&
+				d.getPositionListInDepartment().equals(posList));
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(name,location,posList);
+	}
+}

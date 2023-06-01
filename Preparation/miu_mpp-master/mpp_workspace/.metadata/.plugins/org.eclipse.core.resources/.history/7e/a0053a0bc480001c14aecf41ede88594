@@ -1,0 +1,45 @@
+package application;
+
+
+
+import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
+
+public class BroCode extends Application {
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+	@Override
+	public void start(Stage stage) throws Exception {
+		// TODO Auto-generated method stub
+		Group root = new Group();
+		Scene scene = new Scene(root, 600, 600);
+		
+		Image icon = new Image("logo.png");
+		stage.getIcons().add(icon);
+		stage.setTitle("Stae demo program");
+		stage.setWidth(420);
+		stage.setHeight(420);
+		stage.setResizable(false);
+//		stage.setX(50);
+//		stage.setY(50);
+//		stage.setFullScreen(true);
+//		stage.setFullScreenExitHint("press q");
+//		stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("q"));
+		
+		stage.setScene(scene);
+		stage.show();
+		
+	}
+
+}

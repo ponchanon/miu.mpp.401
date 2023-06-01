@@ -1,0 +1,11 @@
+package level4;
+
+public class Immutable_Test {
+
+	public static void main(String[] args) {
+		Contacts c = new Contacts("Ariel", "641-819-0000");
+		
+
+	}
+
+}

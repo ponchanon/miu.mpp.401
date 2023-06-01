@@ -1,0 +1,18 @@
+package final_cloOldQuestion;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+	List<Company> arr1 = new ArrayList<Company>();
+	arr1 = Arrays.asList(
+			new Company("IBM","San Fransisco", "Califonia",1000.00),
+			new Company("IBM","San Fransisco", "Califonia",1000.00),
+			new Company("IBM","San Fransisco", "Califonia",1000.00),
+			new Company("IBM","San Fransisco", "Califonia",1000.00),
+			new Company("IBM","San Fransisco", "Califonia",1000.00),
+			new Company("IBM","San Fransisco", "Califonia",1000.00),
+			new Company("IBM","San Fransisco", "Califonia",1000.00),
+			new Company("IBM","San Fransisco", "Califonia",1000.00),
+			);
+}

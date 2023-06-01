@@ -1,0 +1,23 @@
+package finalOldQuestion;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class Main {
+
+	public static void main(String[] args) {
+		List<Product> arr1 = new ArrayList <Product>();
+		arr1 = Arrays.asList(new Product("001", "Laptop", "Dell", 40.00),
+				new Product("001", "Laptop", "Dell", 4452.00),
+				new Product("002", "Mouse", "Dell", 45.00),
+				new Product("003", "HDMI", "Dell", 23.00),
+				new Product("001", "Laptop", "Dimi", 40.00),
+				new Product("005", "Laptop", "Lenovo", 140.00),
+				new Product("006", "Laptop", "LifeExt", 240.00),
+				new Product("007", "Laptop", "Live", 440.00),
+				new Product("008", "Laptop", "Microsoft", 40.00));
+
+	}
+
+}

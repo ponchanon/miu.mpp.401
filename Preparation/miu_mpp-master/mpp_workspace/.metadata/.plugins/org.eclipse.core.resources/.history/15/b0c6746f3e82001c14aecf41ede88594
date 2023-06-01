@@ -1,0 +1,12 @@
+package prog1;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		ACustomer John = new CorporateCust("John", "1000 N 4th St, Fairfield IA 52557", "641-819-2000", 0,50.00);
+		ACustomer Mary = new PersonalCust("Mary", "5 St.Micheal Ave, Brooklyn NY 72597", "641-819-2002", 0,"1234567890123456");
+
+	}
+
+}

@@ -1,0 +1,12 @@
+package final_test;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Employee john = new Employee(0001, "John", "", "Smith", 1980, 06, 01,"123-45-6789",4500.00, );
+		Employee john2 = new Employee(0001, "John", "", "Smith", 1980, 06, 01,"123-45-6789",4500.00, admin);
+		Employee mary = new Employee(0002, "Mary", "Roslyn", "Jane", 1988, 10, 20,"123-45-6789",3500.00, receptionist);
+
+	}
+
+}

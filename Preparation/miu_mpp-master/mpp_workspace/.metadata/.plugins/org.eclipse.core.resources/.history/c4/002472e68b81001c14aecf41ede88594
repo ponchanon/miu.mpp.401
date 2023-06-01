@@ -1,0 +1,49 @@
+package level1_3a;
+
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+
+public class Menu extends Application{
+
+	@Override
+	public void start(Stage primaryStage) {	
+		
+		FlowPane flowpane = new FlowPane(); //(FlowPane)FXMLLoader.load(getClass().getResource("Sample.fxml"));
+		flowpane.setAlignment(Pos.TOP_CENTER);
+		flowpane.setPadding(new Insets(10,15,0,15));
+		
+		 //Creating a menu
+		javafx.scene.control.Menu myMenu = new javafx.scene.control.Menu("File");
+	      //Creating menu Items
+	      MenuItem item1 = new MenuItem("Add Files");
+	      MenuItem item2 = new MenuItem("Start Converting");
+	      MenuItem item3 = new MenuItem("Stop Converting");
+	      MenuItem item4 = new MenuItem("Remove File");
+	      MenuItem item5 = new MenuItem("Exit");
+	      //Adding all the menu items to the menu
+	      myMenu.getItems().addAll(item1, item2, item3, item4, item5);
+	      //Creating a menu bar and adding menu to it.
+	      MenuBar menuBar = new MenuBar(myMenu);
+	      menuBar.setTranslateX(200);
+	      menuBar.setTranslateY(20);
+	      
+	      flowpane.getChildren().add(menuBar);
+	      
+	      Scene scene= new Scene(flowpane, 500,200);
+	      primaryStage.setTitle("My Menu");
+	      primaryStage.setScene(scene);
+	      primaryStage.show();
+	}
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+}

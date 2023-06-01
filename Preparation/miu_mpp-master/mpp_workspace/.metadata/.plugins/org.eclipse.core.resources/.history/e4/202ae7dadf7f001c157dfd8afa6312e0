@@ -1,0 +1,14 @@
+package level4;
+
+public class Enum_Test {
+
+	public static void main(String[] args) {
+		Person p = new Person("Micheal", "641-819-0000", 33);
+		p.setShirtSize(Size.LARGE);
+		if(p.getShirtSize() != Size.SMALL) {
+			System.out.println("You are good!");
+		}
+
+	}
+
+}

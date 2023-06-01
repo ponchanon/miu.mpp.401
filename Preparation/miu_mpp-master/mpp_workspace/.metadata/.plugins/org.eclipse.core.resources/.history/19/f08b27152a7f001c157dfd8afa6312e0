@@ -1,0 +1,109 @@
+package level2_no5_redo_school_lab2_level3;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class Department {
+
+	private String name;
+	private List<Person> persons;//unidirectional, 0 to many 
+		
+	Department(String name){
+		this.name = name;
+		persons= new ArrayList<Person>();
+	}
+	public double getTotalSalary() {		
+		//----------------
+		// lambda & stream
+		//----------------	
+
+		return persons.stream().mapToDouble(Person::getSalary).sum();
+		
+		//for each
+//		double sumSalary = 0.0;
+//		for(Person p : persons) {
+//			if(!(p instanceof Student)) {
+//				sumSalary += p.getSalary();
+//			}
+//		}
+//		return sumSalary;
+	}
+	public void showAllMembers() {
+		//----------------
+		// lambda & stream
+		//----------------	
+		persons.stream().forEach(p -> System.out.printf("%s%n", p.name + "," + p.phone + "," + p.age + "," + p.getClass().getSimpleName()));
+		
+		//persons.forEach(person -> System.out.println(person.name + "," + person.phone + "," + person.age + "," + person.getClass().getSimpleName()));
+	}
+	public void unitsPerFaculty() {
+		//----------------
+		// lambda & stream
+		//----------------
+		persons.stream().filter(p -> p.getClass().getSimpleName().equals("Faculty"))
+			.forEach(p -> System.out.println(p.name + " : " + ((Faculty)p).getTotalUnits()));
+		
+//		persons.forEach(person -> {
+//			if(person.getClass().getSimpleName().equals("Faculty")) {
+//				System.out.println(person.name + " : " + ((Faculty)person).getTotalUnits());
+//			}
+//		});		
+	}	
+	public void addPerson(Person p) {
+		persons.add(p);
+	}
+	
+	public void showAllStudentsOfAFacultyMember(String facName) {
+		//----------------
+		// lambda & stream
+		//----------------
+		List<Course> facCourses = new ArrayList<Course>();
+		System.out.println("List of students who take " + facName + " classes : ");
+		
+		Stream<Course> facCourses2 = persons.stream().filter(p -> p instanceof Faculty && p.name.equals(facName))
+				.map(p -> (Faculty)p)
+				.flatMap(Faculty::getCourses);
+				
+//				.map(p -> p.name.equals(facName))
+//				.map(p -> (Faculty)p)
+//				.flatMap(Faculty::getCourses);
+					
+		
+//		persons.stream().filter(p -> p instanceof Student)
+//			.filter(p -> ((Student)p).isTakenFacultyCourses(facCourses))
+//			.forEach(Person::getName);
+			
+		
+		//-----imperative style solution
+		//get facName's courses
+		//List<Course> facCourses = new ArrayList<Course>();
+		for(Person p : persons) {
+			if(p instanceof Faculty) {
+				if(p.name.equals(facName)) {
+					facCourses = ((Faculty)p).getCourses();
+				}
+			}
+		}		
+		//find students who take fac member courses
+		System.out.println("List of students who take " + facName + " classes : ");
+		
+		for(Person per : persons) {
+			if(per instanceof Student) {
+				//check this student is taken any of the facCourses
+				if (((Student)per).isTakenFacultyCourses(facCourses)) {
+					System.out.println(per.name);
+				}
+			}
+		}		
+	}
+	
+	public void showAllStudentsNCourses(){
+		persons.forEach(person ->{			
+			if(person.getClass().getSimpleName().equals("Student") || person.getClass().getSimpleName().equals("StaffStudent")) {
+				((Student)person).showCourses();
+			}
+		});
+	}
+}

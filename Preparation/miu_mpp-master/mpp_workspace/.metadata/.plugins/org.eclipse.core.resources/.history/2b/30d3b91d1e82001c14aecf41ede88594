@@ -1,0 +1,19 @@
+package prog1;
+
+public class PersonalCust extends ACustomer{
+	private String creditRating;
+	private String creditCard;
+	
+	public PersonalCust(String creditRating, String creditCard) {
+		super();
+		this.creditRating = "poor";
+		this.creditCard = creditCard;
+	}
+
+	@Override
+	public void getCreditRating() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,32 @@
+package final_cloOldQuestion;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+
+public class Main {
+	public static void main(String[] args) {
+		List<Company> arr1 = new ArrayList<Company>();
+		arr1 = Arrays.asList(
+				new Company("IBM","Moisey", "Califonia",1000.00),
+				new Company("Microsoft","Tahoma", "New York",1000.00),
+				new Company("Dell","Huston", "Texas",1000.00),
+				new Company("Google","Dallas", "Nebraska",1000.00),
+				new Company("Daewoo","Calton", "Califonia",1000.00),
+				new Company("IBM","Mohamad", "Maryland",1000.00),
+				new Company("IBM","Couse", "Califonia",1000.00),
+				new Company("IBM","Cruise", "Iowa",1000.00)
+				);
+		
+		//a
+		arr1.stream().filter(c -> c.getCompanyCity().charAt(0) == 'M')
+			//.map(Company::getCompanyCity)
+			.distinct()
+			.sorted(Comparator.comparing(Company::getCompanyCity))
+			.forEach(System.out::println);
+		
+		//a
+	}
+	
+}

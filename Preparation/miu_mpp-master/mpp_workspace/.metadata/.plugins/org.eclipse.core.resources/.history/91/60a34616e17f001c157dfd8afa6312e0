@@ -1,0 +1,15 @@
+package level4;
+
+import java.time.LocalDate;
+
+public final class ImmutableStudent {
+	private final String name;
+    private final int regNo;
+    private final LocalDate regDate;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

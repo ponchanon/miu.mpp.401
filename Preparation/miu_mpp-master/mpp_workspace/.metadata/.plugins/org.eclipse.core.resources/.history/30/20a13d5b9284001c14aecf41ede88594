@@ -1,0 +1,11 @@
+package proctor_90pointsTotal;
+
+public class Main {
+	public static void main(String[] args) {
+		
+	}
+	
+	private Stream<Character> stringToStream (String str) {
+		
+	}
+}

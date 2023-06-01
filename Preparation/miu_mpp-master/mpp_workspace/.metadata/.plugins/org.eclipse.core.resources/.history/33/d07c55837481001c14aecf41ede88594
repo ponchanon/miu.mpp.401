@@ -1,0 +1,69 @@
+package level1;
+	
+import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.FlowPane;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+
+
+public class Main extends Application {
+	
+	@Override
+	public void start(Stage primaryStage) {
+		int lblWidthMin = 150;
+		int lblHeight = 25;
+		try {
+			FlowPane flowpane = new FlowPane(); //(FlowPane)FXMLLoader.load(getClass().getResource("Sample.fxml"));
+			flowpane.setAlignment(Pos.CENTER);
+			flowpane.getStyleClass().add("pane");
+			flowpane.setPadding(new Insets(0,15,0,15));//top, right, bottom, left
+			
+						
+			Label lblName = new Label("Name");
+			lblName.setPrefSize(lblWidthMin, lblHeight);
+			Label lblStreet = new Label("Street");
+			lblStreet.setPrefSize(lblWidthMin, lblHeight);
+			Label lblCity = new Label("City");
+			lblCity.setPrefSize(lblWidthMin, lblHeight);
+			Label lblState = new Label("State");
+			lblState.setPrefSize(lblWidthMin, lblHeight);
+			Label lblZip = new Label("Zip");
+			lblZip.setPrefSize(lblWidthMin, lblHeight);
+			
+			TextField txtName = new TextField();
+			txtName.setPrefSize(lblWidthMin, lblHeight);
+			TextField txtStreet = new TextField();
+			txtStreet.setPrefSize(lblWidthMin, lblHeight);
+			TextField txtCity = new TextField();
+			txtCity.setPrefSize(lblWidthMin, lblHeight);
+			
+			Scene scene = new Scene(flowpane,620,300);			
+			
+			flowpane.getChildren().add(lblName);
+			flowpane.getChildren().add(lblStreet);
+			flowpane.getChildren().add(lblCity);
+			
+			
+			flowpane.getChildren().add(lblState);
+			flowpane.getChildren().add(lblZip);
+			
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setTitle("Address Form");
+			primaryStage.setScene(scene);
+			primaryStage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+}

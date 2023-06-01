@@ -1,0 +1,9 @@
+package level4;
+
+public class Test {
+	
+	public static void main(String[] args) {
+		Person p1 = new Person("John", "641-819-2000", 50);
+	}
+	
+}

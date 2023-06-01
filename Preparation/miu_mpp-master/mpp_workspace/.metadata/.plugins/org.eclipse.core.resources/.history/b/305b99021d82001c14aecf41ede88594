@@ -1,0 +1,30 @@
+package prog1;
+
+import java.time.LocalDate;
+import java.util.List;
+
+public class Order {
+	private String ordernumber;
+	private boolean prepaid;
+	private double orderprice;
+	private LocalDate orderdate;
+	private String status;
+	private ACustomer customer;
+	private List<Orderline> orderLineList;
+	
+	public double getTotalPrice() {
+		return 0.0;
+	}	
+	public boolean getPrepaid() {
+		return false;
+	}
+	public double getCustomerPoints() {
+		return 0.0;
+	}
+	public double getOrderPoionts() {
+		return 0.0;
+	}
+	public void setCustomerPoints() {
+		
+	}
+}

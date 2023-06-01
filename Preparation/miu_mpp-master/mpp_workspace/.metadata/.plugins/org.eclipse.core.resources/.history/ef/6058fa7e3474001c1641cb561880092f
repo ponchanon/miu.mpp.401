@@ -1,0 +1,46 @@
+package lab3_3;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Company {
+	private String name;
+	private List<Department> deptList = new ArrayList<Department>();
+	public Company(String name){
+		this.name = name;
+	}	
+	public void addDepartment(Department d) {
+		deptList.add(d);
+	}
+	public void print() {
+		System.out.printf("%s%n", "Company Name : " + name );
+		for(int i = 0; i <deptList.size(); i++) {
+			deptList.get(i).print();
+		}
+	}
+	public double getSalary() {
+		double sumSalary = 0.0;		
+		for(int i = 0; i <deptList.size(); i++) {
+			sumSalary += deptList.get(i).getSalary();
+		}
+		System.out.printf("%s", "Total Salary of " + name + " Company is " + sumSalary);
+		return sumSalary;
+	}
+	
+	public void printReportingHierarchy() {
+		//
+	}
+	public Position getTopExecutive() {
+		
+		deptList.forEach(dp -> {
+			if(dp.getName().equals("all")) {
+				for(int i = 0; i <dp.getPositionListInDepartment().size(); i++) {
+					if(dp.getPositionListInDepartment().get(i).equals("Top Executive")) {
+						//
+					}
+				}
+				
+			}
+		});
+	}
+}

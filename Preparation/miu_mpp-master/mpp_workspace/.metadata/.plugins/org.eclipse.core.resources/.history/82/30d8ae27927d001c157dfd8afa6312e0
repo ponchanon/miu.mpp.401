@@ -1,0 +1,84 @@
+package level3;
+
+import java.time.LocalDate;
+import java.util.Objects;
+
+public 	class Employee implements Cloneable {
+	
+	private int employeeId;
+	private String firstName;
+	private String middleInitial;
+	private String lastName;
+	private LocalDate birthDate;
+	private String sSN;
+	private double salary;
+	private Position position;
+	
+	public Employee(int id, String fn, String mi, String ln, int yearOfBirth, int monthOfBirth, int dayOfBirth, String ssn, double sal, Position position)
+	{
+		this.employeeId = id;
+		this.firstName = fn;
+		this.middleInitial = mi;
+		this.lastName = ln;
+		this.sSN = ssn;
+		this.salary = sal;
+		this.position = position;
+		this.birthDate = LocalDate.of(yearOfBirth, monthOfBirth, dayOfBirth);
+	}
+	
+	public int getEmployeeId() {
+		return employeeId;
+	}
+	
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getMiddleInitial() {
+		return middleInitial;
+	}
+	
+	public String getLastName() {
+		return lastName;
+	}
+	public void print() {
+		System.out.printf("%s%n",firstName + " " + middleInitial + (middleInitial !="" ? " " : "") + lastName + ", " + birthDate + ", " + sSN + ", " + salary  );
+	}
+	
+	@Override
+	public boolean equals(Object e) {
+		if(e == null) return false;
+		if(!(e instanceof Employee)) return false;
+		Employee emp = (Employee) e;
+		return emp.employeeId == this.employeeId 
+				&& emp.firstName.equals(this.firstName) 
+				&& emp.middleInitial.equals(this.middleInitial) 
+				&& emp.lastName.equals(this.lastName)
+				&& emp.birthDate.equals(this.birthDate)
+				&& emp.sSN.equals(this.sSN)
+				&& emp.salary == this.salary
+				&& emp.position.equals(this.position);
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(employeeId, firstName, middleInitial, lastName, sSN, salary, birthDate, position);
+	}
+	
+	@Override
+	public String toString() {
+		return employeeId + "," + firstName  
+				+ (middleInitial == "" ? " " + lastName : middleInitial + " " + lastName)				
+				+ "," + sSN  + "," + salary + "," 
+				+ position.getTitle()  + "," + birthDate + "\n";
+		
+	}
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException{
+		
+		Employee copy = (Employee) super.clone();
+		return null;
+	}
+	
+}

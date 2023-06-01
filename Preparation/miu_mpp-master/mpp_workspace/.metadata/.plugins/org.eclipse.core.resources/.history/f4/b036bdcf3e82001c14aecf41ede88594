@@ -1,0 +1,14 @@
+package prog1;
+
+public class HealthPoints extends ACompPoints{
+	private double points = 1.0;
+	public HealthPoints(double points) {
+		super();
+		this.points = points;
+	}
+
+	@Override
+	public double getPoints() {
+		return points;
+	}
+}

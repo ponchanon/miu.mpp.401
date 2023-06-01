@@ -1,0 +1,46 @@
+package prog1;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+public class CorporateCust extends ACustomer {
+	
+	private String creditRating;
+	private double creditLimit;
+	//have to record like screenshot for bill generating, if not after points have been deducted, retrieving bill from order obj and customer obj again will not reflect the actual amount paid during transaction
+	private List<Order> billRecord = new ArrayList<Order>();
+	
+	public CorporateCust(String name, String address, String phone, double points, double creditLimit) {
+		super(name, address, phone,points);
+		this.creditRating = "good";
+		this.creditLimit = creditLimit;
+	}
+	public double getCreditLimit() {
+		return creditLimit;
+	}
+	public void setCreditLimit(double creditLimit) {
+		this.creditLimit = creditLimit;
+	}
+	public void setCreditRating(String creditRating) {
+		this.creditRating = creditRating;
+	}
+	public void addBillRecord(Order o) {
+		billRecord.add(o);
+	}
+	@Override
+	public String getCreditRating() {
+		return creditRating;
+		
+	}
+	public void generateMonthlyBill(int month, int year) {		
+		LocalDate givenDate = LocalDate.of(year, month, 1);
+		billRecord.stream()
+			.forEach(o -> {
+				if(o.getOrderdate().getMonth() == givenDate.getMonth() && o.getOrderdate().getYear() == givenDate.getYear()) {
+					System.out.println(this.getName() + ":" + "---- Bill for " + month+"/"+ year + "----" );
+					System.out.println(o.getOrderdate() + "   " + o.getOrdernumber() + "   " + "$" + o.getOrderprice());
+				}
+			});
+	}
+}

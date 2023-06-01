@@ -1,0 +1,69 @@
+package lab3_3_;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+public class Department {
+	private String name;
+	private String location;
+	private List<Position> posList = new ArrayList<Position>();
+	
+	public Department(String name, String location){
+		this.name = name;
+		this.location = location;
+	}	
+	public void addPosition(Position p) {
+		posList.add(p);
+	}
+	public void print() {
+		System.out.printf("%s%n", "Department : " + name );
+		for(int i = 0; i <posList.size(); i++) {
+			posList.get(i).print();
+		}
+	}
+	//total Department salary - summation of each filled position in department
+	public double getSalary() {
+		double sumSalary = 0.0;
+		for(int i = 0; i <posList.size(); i++) {
+			sumSalary += posList.get(i).getSalary();
+		}
+		return sumSalary;
+	}
+	public String getName() {
+		return name;
+	}
+	public String getLocation() {
+		return location;
+	}	
+	public List<Position> getPositionListInDepartment(){
+		return posList;
+	}
+	public void printReportingHierarchy() {
+		//print department head
+	}
+	public Position getDepartmentHead() {
+		//2. get department head
+		posList.forEach(p -> {
+			if(p.getTitle().equals("Dept Head")) {
+				//sale head
+				p.printDownLine();
+			}
+		});
+		return null;
+	}
+	public boolean equals(Object o){
+		if(o==null) return false;
+		if(o.getClass() != this.getClass()) {
+			return false;
+		}
+		Department d = (Department) o;
+		return (d.getName().equals(name)&& 
+				d.getLocation().equals(location) &&
+				d.getPositionListInDepartment().equals(posList));
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(name,location,posList);
+	}
+}

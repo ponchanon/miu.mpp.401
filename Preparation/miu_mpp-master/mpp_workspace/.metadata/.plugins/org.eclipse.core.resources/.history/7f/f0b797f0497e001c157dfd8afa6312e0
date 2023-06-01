@@ -1,0 +1,139 @@
+package level1;
+
+/*2)  Use Lambdas and Streams to do the following.  Hard code all the data that you need and Test it Thoroughly!    
+  a)  In  ‘Program 4’  of the file I gave you, of complete Java 8 programs 
+  (At first ignore the // group Employees by department code in that program) (Run it) :  
+ * 
+ */
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+public class MainLab {
+
+	public static void main(String[] args) {
+		// initialize array of Employees
+	      Employee[] employees = {
+	         new Employee("Jason", "Red", 5000, "IT"),
+	         new Employee("Ashley", "Green", 7600, "IT"),
+	         new Employee("Matthew", "Indigo", 3587.5, "Sales"),
+	         new Employee("James", "Indigo", 4700.77, "Marketing"),
+	         new Employee("Luke", "Indigo", 6200, "IT"),
+	         new Employee("Jason", "Blue", 3200, "Sales"),
+	         new Employee("Wendy", "Brown", 4236.4, "Marketing")};
+
+	      // get List view of the Employees
+	      List<Employee> list = Arrays.asList(employees);
+
+	      // display all Employees
+	     // System.out.println("Complete Employee list:");
+	      //list.stream().forEach(System.out::println);   //A method reference.
+	      System.out.println("Answers for Lab - Lambdas and Streams : No. 2. (a)\n");
+	      //1)Count the number of last names that begin with the letter  ‘B’.  Print out this number.
+	      System.out.printf("1)Count the number of last names that begin with the letter  ‘B’%n%s%n",	      
+	      	list.stream()
+	      	.filter(v -> v.getLastName().charAt(0) == 'B')
+	      	.count()
+	      );
+	      	
+	      //2)Print out all of the Employee objects whose last name begins with the letter  ‘B’  in sorted order.  
+	      Predicate<Employee> lastNameB = 
+	    	         e -> (e.getLastName().charAt(0) == 'B');	    	         
+         System.out.printf(
+                 "%n2)Employee objects whose last name begins with the letter  ‘B’  in sorted order %n");
+          list.stream()
+              .filter(lastNameB)
+              .sorted(Comparator.comparing(Employee::getLastName))
+              .forEach(System.out::println);
+	      //3)Print out all of the Employee objects whose last name begins with the letter  ‘B’  
+          //and change their first name and last name to be All capital letters.
+          System.out.printf(
+                  "%n3)Employee objects whose last name begins with the letter  ‘B’, and change their first name and last name to be All capital letters %n");
+	      list.stream()
+	           .filter(lastNameB)
+	           .sorted(Comparator.comparing(Employee::getLastName))
+	           .forEach(v -> {
+	        	   v.setFirstName(v.getFirstName().toUpperCase());
+	        	   v.setLastName(v.getLastName().toUpperCase());
+	        	   System.out.println(v.toString());
+	        	   });
+          //Data Revert back to original so that no.4 can test out 
+           list.get(5).setFirstName("Jason");
+           list.get(5).setLastName("Blue");
+           list.get(6).setFirstName("Wendy");
+           list.get(6).setLastName("Brown");
+           //System.out.println("Revert Back " + list.get(5).toString() + "__" + list.get(6).toString()); 
+           
+          //4)Print out All of the employee objects, but if the last name begins with the letter  ‘B’,  
+          //then capitalize all the letters in the last name.
+          System.out.printf(
+                 "%n4)All of the employee objects, if the last name begins with the letter  ‘B’, then capitalize all the letters in the last name. %n");
+          list.stream()
+          	.forEach(e -> {
+          			if(e.getLastName().charAt(0) == 'B')  e.setLastName(e.getLastName().toUpperCase());
+          			System.out.println(e.toString());
+          		});
+          
+          //4.1)Use the Collectors.joining  method to print out All Employee objects.    
+          System.out.printf("%n4.1)Use the Collectors.joining  method to print out All Employee objects.%n%s%n", 
+        		list.stream()
+        		  .map(Employee::toString)
+        		  .collect(Collectors.joining(", ")));	
+          //4.2)Use the Collectors.joining  method to print out All Employee objects, and separate each one with a delimeter of  “---\n---“. 
+          System.out.printf("%n4.2)Use the Collectors.joining  method to print out All Employee objects with ---\\n--- .%n---%s%n", 
+        		list.stream()
+        		  .map(Employee::toString)
+        		  .collect(Collectors.joining("---\n---")));
+          
+         //5)Print out all of the Employee objects’ last names, whose last name begins with the letter  ‘I’  in sorted order, and get rid of all the duplicates.  
+          //Print out only the last names.
+          Predicate<Employee> lastNameI = 
+	    	         e -> (e.getLastName().charAt(0) == 'I');	    	         
+	    System.out.printf(
+              "%n5)Unique (distinct) Employee objects whose last name begins with the letter  ‘I’  in sorted order %n");
+	    list.stream()
+	       		.filter(lastNameI)
+	       		.map(Employee::getLastName)// map ကလိုတဲ့ data ပဲ ရွေးထုတ်လိုက်တာ
+	       		.distinct()
+	       		.sorted()//map နဲ့ data ထုတ်ပြီးသားမို comparator နဲ့ obj compare လုပ်စရာမလိုတော့               
+	       		.forEach(System.out::println);
+           
+           //all employee last name in distinct
+//        System.out.printf(
+//                   "%n5)Unique (distinct) Employee objects last name in sorted order %n");
+//           list.stream()
+//        		.map(Employee::getLastName)// map ကလိုတဲ့ data ပဲ ရွေးထုတ်လိုက်တာ
+//        		.distinct()
+//                .sorted()               
+//                .forEach(System.out::println);
+           
+           //6)Print out the average of all the salaries.
+         System.out.printf("%n6)Print out the average of all the salaries %n%.2f%n",
+        		 list.stream()
+		         	.mapToDouble(Employee::getSalary)
+		         	.average()
+		         	.getAsDouble());      
+         //7)Use the  ‘reduce’  method to print out the total salary of all employees.  
+         System.out.printf("%n7)Total salary of all employees %n%.2f%n",
+        		 list.stream()
+        		 	.mapToDouble(Employee::getSalary)
+        		 	.reduce(0, (v1, v2) -> v1+v2));
+         
+         //8)Print out only the first names of all the employees.  Use the  ‘map’  method to accomplish this.
+         System.out.printf("%n8)Only the first names of all the employees %n");
+        		 list.stream()
+        		 	.map(Employee::getFirstName)
+        		 	.forEach(System.out::println);
+        //9)Create an infinite stream of even numbers (0, 2, 4, …) and then, 
+        //eventually print out only the first 20 even numbers from this stream. 
+        IntStream evenNumStream = IntStream.iterate(0, n -> n + 2);
+        System.out.printf("%n9)First 20 even numbers from an infinite stream of even numbers %n%s%n",
+        		evenNumStream
+        			.limit(20)
+        			.collect(Collectors.joining(", ")));	
+	}
+}

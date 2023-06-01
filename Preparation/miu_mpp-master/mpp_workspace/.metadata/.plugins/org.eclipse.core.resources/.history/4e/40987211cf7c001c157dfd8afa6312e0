@@ -1,0 +1,37 @@
+package jdbc_code;
+
+import java.awt.*;
+import javax.swing.*;
+
+import jdbc_code.JFrame2.SymAction;
+
+public class JFrame_UpdateGPA extends javax.swing.JFrame{
+	public JFrame_UpdateGPA()
+	{
+		
+		//{{INIT_CONTROLS
+		setTitle("Selected ID");
+		getContentPane().setLayout(null);
+		setSize(403,125);
+		setVisible(false);
+		JLabel1.setText("You selected student ID");
+		getContentPane().add(JLabel1);
+		JLabel1.setBounds(48,24,143,22);
+		Idtext.setEditable(false);
+		getContentPane().add(Idtext);
+		Idtext.setBounds(216,24,122,23);
+		BClose.setText("Close");
+		BClose.setActionCommand("Close");
+		getContentPane().add(BClose);
+		BClose.setBounds(156,72,93,25);
+		//}}
+
+		//{{INIT_MENUS
+		//}}
+	
+		//{{REGISTER_LISTENERS
+		SymAction lSymAction = new SymAction();
+		BClose.addActionListener(lSymAction);
+		//}}
+	}
+}

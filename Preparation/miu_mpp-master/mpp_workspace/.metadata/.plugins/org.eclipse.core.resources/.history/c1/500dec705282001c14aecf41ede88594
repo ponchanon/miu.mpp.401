@@ -1,0 +1,39 @@
+package prog1;
+
+import java.time.LocalDate;
+
+public class CorporateCust extends ACustomer {
+	
+	private String creditRating;
+	private double creditLimit;
+	
+	public CorporateCust(String name, String address, String phone, double points, double creditLimit) {
+		super(name, address, phone,points);
+		this.creditRating = "good";
+		this.creditLimit = creditLimit;
+	}
+	public double getCreditLimit() {
+		return creditLimit;
+	}
+	public void setCreditLimit(double creditLimit) {
+		this.creditLimit = creditLimit;
+	}
+	public void setCreditRating(String creditRating) {
+		this.creditRating = creditRating;
+	}	
+	@Override
+	public String getCreditRating() {
+		return creditRating;
+		
+	}
+	public void generateMonthlyBill(int month, int year) {		
+		LocalDate givenDate = LocalDate.of(year, month, 1);
+		super.getOrderList().stream()
+			.forEach(o -> {
+				if(o.getOrderdate().getMonth() == givenDate.getMonth() && o.getOrderdate().getYear() == givenDate.getYear()) {
+					System.out.println(this.getName() + ":" + "---- Bill for " + month+"/"+ year + "----" );
+					System.out.println(o.toString());
+				}
+			});
+	}
+}

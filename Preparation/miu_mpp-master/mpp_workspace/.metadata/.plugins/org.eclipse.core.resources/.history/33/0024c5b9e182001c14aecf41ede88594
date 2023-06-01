@@ -1,0 +1,77 @@
+package finalOldQuestion;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class Main {
+
+	public static void main(String[] args) {
+		List<Product> arr1 = new ArrayList <Product>();
+		arr1 = Arrays.asList(new Product("000", "Lamp", "Dell", 40.00),
+				new Product("001", "Laptop", "Dell", 4452.00),
+				new Product("002", "Mouse", "DreamWorks", 45.00),
+				new Product("003", "HDMI", "Dolge", 23.00),
+				new Product("004", "Charger", "Dimi", 40.00),
+				new Product("005", "Pen", "Lenovo", 140.00),
+				new Product("006", "Tablet", "LifeExt", 240.00),
+				new Product("007", "Watch", "Live", 440.00),
+				new Product("008", "Phone", "Microsoft", 40.00),
+				new Product("009", "Monitor", "HP", 40.00),
+				new Product("010", "Memory", "H&M", 40.00),
+				new Product("011", "Keyboard", "St Micheal", 40.00));
+		
+		//d
+		System.out.println("d) ------------");
+//		arr1.stream().filter(p -> p.getManufacturer().equals("Dell"))
+//						.filter(p -> p.getPrice() > 40)
+//						.forEach(System.out::println);
+		
+		//f
+		System.out.println("f) ------------");
+//		arr1.stream().filter(p -> p.getManufacturer().charAt(0) == 'L')
+//						.sorted(Comparator.comparing(Product::getManufacturer))
+//						.forEach(System.out::println);
+//		arr1.stream().filter(p -> p.getManufacturer().charAt(0) != 'L')
+//						.forEach(System.out::println);
+//						
+		//g
+		System.out.println("g) ------------");
+		//joining က stream တစ်ခုထဲမှာ ထွက်တဲ့ data တွေကြားမှာ , ခံပြီးပဲ ဖြစ်ဖြစ် -- ခံပြီး data ပြပေးတာ .. list 2ခု join တာမဟုတ်
+		Stream<Product>  strP1 = arr1.stream().filter(p -> p.getManufacturer().charAt(0) == 'D');				
+		Stream<Product> strP2 = arr1.stream().filter(p -> p.getManufacturer().charAt(0) == 'H');			
+		Stream<Product> combined1 = Stream.concat(strP1, strP2);		
+		Stream<Product> strP3 = arr1.stream().filter(p -> p.getManufacturer().charAt(0) != 'D')
+				.filter(p -> p.getManufacturer().charAt(0) != 'H');		
+		Stream<Product> combined2 = Stream.concat(combined1, strP3);
+		combined2.forEach(System.out::println);		
+		//concat က list 2ခု မဟုတ် stream ၂ခု
+		
+		//h - original data not change
+		System.out.println("h) ------------");
+		arr1.stream().forEach(p -> {
+			System.out.println(p.getManufacturer().substring(0,2));
+//			if(p.getManufacturer().substring(0,2) == "St") {
+//				System.out.println(p.toString());
+//			}
+		});
+		List<Product> hProdList1 = 
+				arr1.stream().filter(p -> p.getManufacturer().substring(0,2) == "St")
+				.map(p -> new Product (p.getProductID(), p.getDescription(), p.getManufacturer().toUpperCase().toString(),
+						p.getPrice()))
+				.collect(Collectors.toList());
+		hProdList1.stream().forEach(System.out::println);
+//		Stream<Product> strProd2 = arr1.stream().filter(p-> p.getManufacturer().substring(0,2) != "St");
+//		Stream<Product> combinedH = Stream.concat(hProdList1.stream(), strProd2);
+//		List<Product> prodListH = combinedH.collect(Collectors.toList());
+//		prodListH.stream().forEach(System.out::println);
+		
+		
+
+	}
+
+}

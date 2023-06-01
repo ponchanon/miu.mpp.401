@@ -1,0 +1,56 @@
+package lab3_3;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Company ibm = new Company("IBM");
+		
+		Department all = new Department("All", "HH Tower Level 9", ibm);
+		Department sales = new Department("Sales", "HH Tower Level 9", ibm);
+		Department marketing = new Department("Marketing", "HH Tower Level 25", ibm);
+		
+		Position topExe = new Position("Top Executive","Top Executive", all);
+		Position deptHeadSales = new Position("Dept Head","Department Head - Sales", sales);
+		Position deptHeadMarkt = new Position("Dept Head","Department Head - Marketing", marketing);
+		
+		Position marktAssit = new Position("Marketing Assistant","Marketing Assistant", marketing);
+		
+		Position supervisor1 = new Position("Supervisor", "Sale Supervisor", sales);
+		Position supervisor2 = new Position("Supervisor", "Sale Supervisor", sales);
+		Position salesPerson1 = new Position("Sales Person", "Sales Person", sales);
+		Position salesPerson2 = new Position("Sales Person", "Sales Person", sales);
+		Position salesPerson3 = new Position("Sales Person", "Sales Person", sales);
+		Position salesPerson4 = new Position("Sales Person", "Sales Person", sales);
+		Position salesPerson5 = new Position("Sales Person", "Sales Person", sales);
+		
+		//int id, String fn, String mi, String ln, int yearOfBirth, int monthOfBirth, int dayOfBirth, long ssn, double sal, Position position)
+		Employee lyle  = new Employee(0001, "Lyle", "", "Smith", 1980, 06, 01,"123-45-6789",14500.00, topExe);
+		Employee anne = new Employee(0002, "Anne", "Roslyn", "Jane", 1988, 10, 20,"123-45-6789",6500.00, deptHeadMarkt);		
+		Employee gary = new Employee(0003, "Gary", "Junior", "Moore", 1987, 10, 20,"123-45-6789",3500.00, marktAssit);
+		
+		Employee ron = new Employee(0004, "Ron", "Bob", "Smith", 1997, 05, 11,"123-45-6789",6500.00, deptHeadSales);
+		Employee peter = new Employee(0005, "Peter", "", "William", 1987, 10, 20,"123-45-6789",4500.00, supervisor1);
+		Employee dan = new Employee(0006, "Dan", "Edison", "Brown", 1987, 10, 20,"123-45-6789",3500.00, salesPerson1);
+		
+		admin.addEmployee(john);
+		receptionist.addEmployee(mary);
+		
+		swEngineer.addEmployee(frank);
+		webDeveloper.addEmployee(susan);
+				
+		sales.addPosition(admin);
+		sales.addPosition(secretary);
+		sales.addPosition(receptionist);
+		
+		marketing.addPosition(swEngineer);
+		marketing.addPosition(webDeveloper);
+		marketing.addPosition(dataAnalyst);		
+		
+		ibm.addDepartment(sales);
+		ibm.addDepartment(marketing);	
+				
+		//ibm.print();
+		double ttSal = ibm.getSalary();
+	}
+
+}
