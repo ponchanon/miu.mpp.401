@@ -1,0 +1,2 @@
+It will give us  compiler Error because  there is no overriding one for abstract methods of either B or C.
+To handle this error we can override the method method() in class D.

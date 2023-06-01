@@ -1,0 +1,3 @@
+In the removeDuplicates() method, 
+HashMap is used to keep tracks of duplicates, 
+but hashCode is not overridden in the class Employee. 

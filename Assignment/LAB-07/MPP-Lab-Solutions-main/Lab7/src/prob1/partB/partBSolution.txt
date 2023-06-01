@@ -1,0 +1,10 @@
+The equals method in Employee class is not actually overriding the equals from Object class.
+First thing the signature in equals method in Object class have object parameter, so the method is not overriding, instead 
+it is overloading the method.
+
+The solution can be something like:
+@Override
+	public boolean equals(Object ob) {
+		Employee e = (Employee)ob;
+		return e.name.equals(name) && e.salary == salary;
+	}

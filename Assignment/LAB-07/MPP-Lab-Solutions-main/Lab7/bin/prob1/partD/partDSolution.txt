@@ -1,0 +1,5 @@
+In the removeDuplicates() method, 
+HashMap is used to keep tracks of duplicates,
+Equals and hashCode have been implemented correctly in Employee.
+However, values in the HashMap are modified when it is updated, which leads to violate
+the principle that keys should be immutable.

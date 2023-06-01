@@ -1,0 +1,6 @@
+
+
+It will not give any compiler error but if we try to implement this class further in any other class , we
+have to implement the method() in that class.
+There can be two options, either we can just declare the method or make the method abstract in interface D  so that the method can be overridden on the implementor class.
+Another can be we can provide default implementation of the method in the interface D.
